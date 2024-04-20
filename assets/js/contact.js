@@ -21,12 +21,13 @@ $("#txtHoTen").blur(function () {
 });
 
 function ktraEmail() {
-  let email = $("#email").val();
-  let btcq = /^\w{1,}\d{1,}@gmail+\.com$/;
-  if (email == "") {
+  let email = $("#email").val().trim();
+  let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if (email === "") {
     $("#errEmail").html("Không được rỗng");
     return false;
-  } else if (btcq.test(email)) {
+  } else if (emailRegex.test(email)) {
     $("#errEmail").html("*");
     return true;
   } else {
